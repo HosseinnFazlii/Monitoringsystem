@@ -1,0 +1,14 @@
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ping Results</title>
+</head>
+<body>
+    <h1>Ping Results for Domais</h1>
+    {% for domain_name, result in results_dict.items %}
+        <p>{{ domain_name }}: {{ result }}</p>
+    {% endfor %}
+    <p>hello</p>
+</body>
+</html>

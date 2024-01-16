@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Server List</title>
+</head>
+<body>
+    <h1>Server List</h1>
+    
+    <ul>
+        {% for server in servers %}
+            <li>
+                <strong>Name:</strong> {{ server.name }}<br>
+                <strong>Address:</strong> {{ server.address }}<br>
+                <strong>Password:</strong> {{ server.password }}<br>
+                <!-- Add more server information fields as needed -->
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
