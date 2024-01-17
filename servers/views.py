@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
-from .models import server
+from .models import server,domaininfo
 import paramiko
 import re
 
@@ -45,3 +45,35 @@ def server_view(request,server_id):
      context={'server': server1}
     
      return render(request, 'server/server.html', context)
+
+
+
+#change domain
+
+
+def changedomain(request):
+    
+    servers = server.objects.all()
+    context={'servers':servers}
+    
+    return render(request,'domainchange/serverlist.html',context)
+
+
+#page for select what domain should be
+
+def changedomaininfo(request,server_id):
+    
+    server1 = get_object_or_404(server,pk=server_id)
+    domains=domaininfo.objects.all()
+
+    context = {'server1': server1,'domains':domains}
+
+    return render(request, 'domainchange/server.html', context)
+
+#view to handel ssh and change domain
+
+def mainchangedomain(request,server_id,domain_id):
+    server1 = get_object_or_404(server,pk=server_id)
+    domain = get_object_or_404(domaininfo,pk=domain_id)
+    context={'domain':domain,'server1':server1}
+    return  render(request, 'domainchange/domain.html', context)

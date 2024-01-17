@@ -1,0 +1,17 @@
+<!-- Display server information -->
+<h2>Server List</h2>
+<ul>
+
+        <li>
+            Server Name: {{ server1.name }}<br>
+            Server IP Address: {{ server1.address }}<br>
+
+            <!-- Button to change domain info for each server -->
+            {% for domain in domains %}
+                <a href=#>
+                    Change Domain Info: {{ domain.name }}
+                </a><br>
+            {% endfor %}
+        </li>
+    
+</ul>
