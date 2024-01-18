@@ -75,5 +75,47 @@ def changedomaininfo(request,server_id):
 def mainchangedomain(request,server_id,domain_id):
     server1 = get_object_or_404(server,pk=server_id)
     domain = get_object_or_404(domaininfo,pk=domain_id)
+    uuid=domain.uuid
+    servername=domain.servername
+    host=domain.host
+
+    try:
+        # Connect to the remote VPS via SSH
+        with paramiko.SSHClient() as ssh:
+            ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+            # Replace 'your_vps_ip', 'your_ssh_username', and 'your_ssh_password' with actual values
+            ssh.connect(server1.address, username='root', password=server1.password)
+
+            # Construct the command with input parameters
+            command_args = [
+                'python3',
+                'shod3.py',
+                uuid,
+                servername,
+                host,
+            ]
+
+            # Join the command arguments into a single string
+            command = ' '.join(command_args)
+
+            # Execute the command on the remote VPS
+            stdin, stdout, stderr = ssh.exec_command(command)
+
+            # Read the output and error (if any) from the command
+            output = stdout.read().decode('utf-8')
+            error = stderr.read().decode('utf-8')
+
+            # Check for errors or handle the output as needed
+            if error:
+                return HttpResponse(f"Error executing script: {error}")
+            else:
+                return HttpResponse(f"Script executed successfully. Output: {output}")
+
+    except Exception as e:
+        return HttpResponse(f"Error: {str(e)}")
+        
+    print(output)
+    
     context={'domain':domain,'server1':server1}
     return  render(request, 'domainchange/domain.html', context)
