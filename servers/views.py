@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import server,domaininfo
 import paramiko
 import re
+import json
 
 # Create your views here.
 def cfip(request,server_id):
@@ -72,6 +73,7 @@ def changedomaininfo(request,server_id):
 
 #view to handel ssh and change domain
 
+
 def mainchangedomain(request,server_id,domain_id):
     server1 = get_object_or_404(server,pk=server_id)
     domain = get_object_or_404(domaininfo,pk=domain_id)
@@ -109,13 +111,16 @@ def mainchangedomain(request,server_id,domain_id):
             # Check for errors or handle the output as needed
             if error:
                 return HttpResponse(f"Error executing script: {error}")
-            else:
-                return HttpResponse(f"Script executed successfully. Output: {output}")
 
     except Exception as e:
         return HttpResponse(f"Error: {str(e)}")
-        
-    print(output)
+    #handle output
+    if "[INF] x-ui Started Successfully" in output:
+        status='x-ui Started Successfully(\U0001F7E2)'
+    else:
+        status='x-ui Started Not Successfully (\U0001F534)'
+    #context    
+    context={'status': status }
+    # Render the 'status.html' template with the script output
+    return render(request, 'domainchange/status.html', context)
     
-    context={'domain':domain,'server1':server1}
-    return  render(request, 'domainchange/domain.html', context)
