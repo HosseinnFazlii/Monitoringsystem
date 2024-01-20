@@ -18,7 +18,9 @@ def ping_view(request):
     for domain_obj in domains:
         domain_name = domain_obj.domain_name
         response = ping(domain_name,unit='ms')
-
+        if response is not None:
+            # Convert the ping response to an integer
+            response = int(response)
         # Check if the response is None (indicating timeout)
         results_dict[domain_name] = response
         # Inside your ping_view function
@@ -28,4 +30,4 @@ def ping_view(request):
 
     # Render a template with
     #  the list of domains with timeout
-    return render(request, 'domainchek/ping_results.html', context)
+    return render(request, 'domainchek/domaincheck.html', context)

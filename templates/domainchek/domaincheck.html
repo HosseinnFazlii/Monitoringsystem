@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block content %}
+
+<div class="row g-3 mb-3">
+                   
+                   
+    <div class="row g-0">
+        <div class="col-lg-6 pe-lg-2 mb-3">
+            <div class="card h-lg-100 overflow-hidden">
+                <div class="card-header bg-body-tertiary">
+                    <div class="row align-items-center">
+                    
+                       
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    {% for domain_name, result in results_dict.items %}
+                    <div class="row g-0 align-items-center py-2 position-relative border-bottom border-200">
+                        <div class="col ps-x1 py-1 position-static">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar avatar-xl me-3">
+                                    <div class="avatar-name rounded-circle bg-soft-primary text-dark"><span class="fs-0 text-primary">اف</span></div>
+                                </div>
+                                <div class="flex-1">
+                                    <h6 class="mb-0 d-flex align-items-center"><a class="text-800 stretched-link" href="#!">{{ domain_name }}</a><span class="badge rounded-pill ms-2 bg-200 text-primary"></span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col py-1">
+                            <div class="row flex-end-center g-0">
+                                <div class="col-auto pe-2">
+                                    <div class="fs--1 fw-semi-bold">{{ result }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            
+        </div>
+        {% endblock %}
