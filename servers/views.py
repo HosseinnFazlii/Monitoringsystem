@@ -29,7 +29,7 @@ def cfip(request,server_id):
     preferred_ip_line = preferred_ip_match.group() if preferred_ip_match else None
 #context
     context={'preferred_ip_line': preferred_ip_line,'start_success_line':start_success_line}
-    return render(request, 'cfip/cfip.html', context)
+    return render(request, 'cfip/cfip_status.html', context)
 
 
 #servers info 
@@ -37,41 +37,18 @@ def servers_view(request):
     servers = server.objects.all()
     context={'servers':servers}
     
-    return render(request,'servers/servers.html',context)
+    return render(request,'servers/mainserver.html',context)
 
 
 #server info 
 def server_view(request,server_id):
      server1 = get_object_or_404(server,pk=server_id)
-     context={'server': server1}
+     domains=domaininfo.objects.all()
+     context = {'server': server1,'domains':domains}
     
-     return render(request, 'server/server.html', context)
+     return render(request, 'server/mainserver.html', context)
 
 
-
-#change domain
-
-
-def changedomain(request):
-    
-    servers = server.objects.all()
-    context={'servers':servers}
-    
-    return render(request,'domainchange/serverlist.html',context)
-
-
-#page for select what domain should be
-
-def changedomaininfo(request,server_id):
-    
-    server1 = get_object_or_404(server,pk=server_id)
-    domains=domaininfo.objects.all()
-
-    context = {'server1': server1,'domains':domains}
-
-    return render(request, 'domainchange/server.html', context)
-
-#view to handel ssh and change domain
 
 
 def mainchangedomain(request,server_id,domain_id):

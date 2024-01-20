@@ -659,22 +659,15 @@
                                     <div class="d-flex align-items-center"><span class="nav-link-icon"><span class="fas fa-chart-pie"></span></span><span class="nav-link-text ps-1">داشبورد</span></div>
                                 </a>
                                     <ul class="nav collapse show" id="dashboard">
-                                        <li class="nav-item"><a class="nav-link active" href="index.html" aria-expanded="false">
+                                        <li class="nav-item"><a class="nav-link active" href="{% url 'ping'  %}" aria-expanded="false">
                                             <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Domains</span></div>
                                         </a>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" href="dashboard/analytics.html" aria-expanded="false">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Cloudflare IP</span></div>
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'servers'  %}" aria-expanded="false">
+                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">servers</span></div>
                                         </a>
                                         </li>
-                                        <li class="nav-item"><a class="nav-link" href="dashboard/crm.html" aria-expanded="false">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Domain Changer</span></div>
-                                        </a>
-                                        </li>
-                                        <li class="nav-item"><a class="nav-link" href="dashboard/e-commerce.html" aria-expanded="false">
-                                            <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Fragment</span></div>
-                                        </a>
-                                        </li>
+                                       
                                         
                                     </ul>
                                 </li>
