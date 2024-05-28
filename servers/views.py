@@ -57,6 +57,7 @@ def mainchangedomain(request,server_id,domain_id):
     uuid=domain.uuid
     servername=domain.servername
     host=domain.host
+    port = domain.port
 
     try:
         # Connect to the remote VPS via SSH
@@ -69,10 +70,11 @@ def mainchangedomain(request,server_id,domain_id):
             # Construct the command with input parameters
             command_args = [
                 'python3',
-                'shod3.py',
+                'shod5.py',
                 uuid,
                 servername,
                 host,
+                port,
             ]
 
             # Join the command arguments into a single string

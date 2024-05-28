@@ -11,4 +11,5 @@ class domaininfo(models.Model):
     uuid=models.CharField(max_length=100)
     servername=models.CharField(max_length=100)
     host=models.CharField(max_length=100)
+    port = models.CharField(max_length=100,default=0)
     

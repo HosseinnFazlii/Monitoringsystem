@@ -1,7 +1,7 @@
 asgiref==3.7.2
 bcrypt==4.1.2
 cffi==1.16.0
-cryptography==41.0.7
+cryptography
 Django==4.2.9
 paramiko==3.4.0
 ping3==4.0.4
