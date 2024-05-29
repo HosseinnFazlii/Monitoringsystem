@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            th, td {
+                padding: 5px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Domain List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>UUID</th>
+                <th>Server Name</th>
+                <th>Host</th>
+                <th>Port</th>
+                <th>Zone ID</th>
+                <th>Specific ID</th>
+                <th>IP Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for domain in domains %}
+                <tr>
+                    <td><a href="{% url 'addsub' domain.id %}">{{ domain.name }}</a></td>
+                    <td>{{ domain.uuid }}</td>
+                    <td>{{ domain.servername }}</td>
+                    <td>{{ domain.host }}</td>
+                    <td>{{ domain.port }}</td>

@@ -12,4 +12,6 @@ class domaininfo(models.Model):
     servername=models.CharField(max_length=100)
     host=models.CharField(max_length=100)
     port = models.CharField(max_length=100,default=0)
-    
+    zoneid = models.CharField(max_length=100,default=0)
+    specificid=models.CharField(max_length=100,default=0)
+    ipaddress=models.CharField(max_length=100,default=0)

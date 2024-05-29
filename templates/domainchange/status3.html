@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .message {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .status {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+                padding: 10px;
+            }
+            .message {
+                padding: 5px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Status</h1>
+
+    {% if status_messages %}
+        <div class="message status">
+            <h2>Success</h2>
+            <ul>
+                {% for message in status_messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    {% if errors %}
+        <div class="message error">
+            <h2>Errors</h2>
+            <ul>
+                {% for error in errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</body>
+</html>
