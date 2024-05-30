@@ -1,3 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,3 +70,6 @@
                     <td>{{ domain.servername }}</td>
                     <td>{{ domain.host }}</td>
                     <td>{{ domain.port }}</td>
+            
+            {%endfor%}
+{% endblock %}

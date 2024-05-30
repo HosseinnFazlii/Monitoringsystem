@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from domaincheck.urls import urlpatterns1
-from servers.urls import urlpatterns2
+from servers.urls import urlpatterns3
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,7 +25,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('domainchek',include(urlpatterns1)),
-    path('servers/',include(urlpatterns2)),
+    path('servers/',include(urlpatterns3),name='servers'),
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

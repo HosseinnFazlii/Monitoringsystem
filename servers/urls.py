@@ -4,7 +4,7 @@ from servers.views import cfip,servers_view,server_view,mainchangedomain,addsub,
 
 app_name='servers'
 
-urlpatterns2 = [
+urlpatterns3 = [
     path('',servers_view,name='servers'),
 
     path('<int:server_id>', server_view, name='server'),
