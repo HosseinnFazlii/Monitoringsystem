@@ -59,6 +59,7 @@ def mainchangedomain(request, server_id, domain_id):
     servername = domain.servername
     host = domain.host
     port = domain.port
+    domainname = domain.name
 
     try:
         # Connect to the remote VPS via SSH
@@ -85,8 +86,28 @@ def mainchangedomain(request, server_id, domain_id):
     # handle output
     status = 'x-ui Started Successfully (\U0001F7E2)' if "[INF] x-ui Started Successfully" in output else 'x-ui Started Not Successfully (\U0001F534)'
     
+    # Extract and increment the numeric part of the domain name
+    match = re.search(r'v(\d+)p443\.domain\.com', domainname)
+    if match:
+        num = int(match.group(1))
+        new_num = num + 1
+        new_domainname = f'v{new_num}p443.domain.com'
+        
+        # Update the domain name in the database
+        domain.name = new_domainname
+        domain.servername=new_domainname
+        domain.host=new_domainname
+        domain.save()
+    else:
+        new_domainname = "Error in domain name format"
+
     # context    
-    context = {'status': status}
+    context = {
+        'status': status,
+        'old_domainname': domainname,
+        'new_domainname': new_domainname,
+        'db_domainname':domain.name
+    }
     
     # Render the 'status.html' template with the script output
     return render(request, 'domainchange/status.html', context)
