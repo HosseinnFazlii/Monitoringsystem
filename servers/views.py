@@ -87,11 +87,12 @@ def mainchangedomain(request, server_id, domain_id):
     status = 'x-ui Started Successfully (\U0001F7E2)' if "[INF] x-ui Started Successfully" in output else 'x-ui Started Not Successfully (\U0001F534)'
     
     # Extract and increment the numeric part of the domain name
-    match = re.search(r'v(\d+)p443\.domain\.com', domainname)
+    match = re.search(r'v(\d+)p(.+)', domainname)
     if match:
         num = int(match.group(1))
+        suffix = match.group(2)
         new_num = num + 1
-        new_domainname = f'v{new_num}p443.domain.com'
+        new_domainname = f'v{new_num}p{suffix}'
         
         # Update the domain name in the database
         domain.name = new_domainname
