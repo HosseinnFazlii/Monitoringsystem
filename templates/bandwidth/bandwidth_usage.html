@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block content %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bandwidth Usage</title>
+</head>
+<body>
+    <h1>Bandwidth Usage for {{ server.hostname }}</h1>
+    <h2>Overall Usage</h2>
+    <p>Limit: {{ bandwidth_usage.limit_gb }} GB</p>
+    <p>Used: {{ bandwidth_usage.used_gb }} GB</p>
+    <p>Free: {{ bandwidth_usage.free_gb }} GB</p>
+    <p>Percentage Used: {{ bandwidth_usage.percent }}%</p>
+    <p>Percentage Free: {{ bandwidth_usage.percent_free }}%</p>
+
+    <h2>Inbound Usage</h2>
+    <p>Limit: {{ in_usage.limit_gb }} GB</p>
+    <p>Used: {{ in_usage.used_gb }} GB</p>
+    <p>Free: {{ in_usage.free_gb }} GB</p>
+    <p>Percentage Used: {{ in_usage.percent }}%</p>
+    <p>Percentage Free: {{ in_usage.percent_free }}%</p>
+
+    <h2>Outbound Usage</h2>
+    <p>Limit: {{ out_usage.limit_gb }} GB</p>
+    <p>Used: {{ out_usage.used_gb }} GB</p>
+    <p>Free: {{ out_usage.free_gb }} GB</p>
+    <p>Percentage Used: {{ out_usage.percent }}%</p>
+    <p>Percentage Free: {{ out_usage.percent_free }}%</p>
+</body>
+</html>
+{% endblock %}

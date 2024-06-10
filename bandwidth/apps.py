@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class BandwithConfig(AppConfig):
+class BandwidthConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'bandwith'
+    name = 'bandwidth'
