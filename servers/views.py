@@ -125,7 +125,7 @@ def addsub(request, domain_id):
     subdomain = domain.servername
     specific_id = domain.specificid
     ip_address = domain.ipaddress
-    api_token = 'Z7_oqh1Glru-iJrN0eEKBITtqTgUPXyvl8zWP6Jv'
+    api_token = 'l4wbU0GSPmF1v8arHWPo_fWYWEEHxlhrczbzgcy3'
     zone_id = domain.zoneid
     login_url = f'http://{ip_address}:54321/login'
     list_url = f'http://{ip_address}:54321/panel/inbound/list'
