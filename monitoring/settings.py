@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ob1*ogzpejs1*odf9$fp7&rz6#!0oyd46-bh@d-nbbmgss$@p3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.yektataravat.ir','yektataravat.ir']
 
 
 # Application definition
@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'domaincheck',
-    'servers',
-    'bandwidth',
+    'servers'
 
 ]
 
