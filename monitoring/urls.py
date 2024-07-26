@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('domainchek',include(urlpatterns1)),
     path('servers/',include(urlpatterns3),name='servers'),
-    path('bandwidth',include('bandwidth.urls')),
+    
 
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
