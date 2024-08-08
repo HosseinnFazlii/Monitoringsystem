@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select New Domain</title>
+</head>
+<body>
+    <h1>Select New Domain for {{ past_domain.name }}</h1>
+    <ul>
+        {% for domain in new_domains %}
+            <li><a href="{% url 'convert_domain' past_domain.id domain.id %}">{{ domain.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
+
+{% endblock %}

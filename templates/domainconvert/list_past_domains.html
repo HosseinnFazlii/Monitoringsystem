@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Past Domains</title>
+</head>
+<body>
+    <h1>Past Domains</h1>
+    <ul>
+        {% for domain in past_domains %}
+            <li><a href="{% url 'select_new_domain' domain.id %}">{{ domain.name }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
+
+{% endblock %}

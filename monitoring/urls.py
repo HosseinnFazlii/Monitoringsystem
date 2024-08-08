@@ -27,6 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('domainchek',include(urlpatterns1)),
     path('servers/',include(urlpatterns3),name='servers'),
+    path('domainconvert/', include('domainconvert.urls')),
     
 
 ]
