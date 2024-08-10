@@ -3,5 +3,7 @@ from .models import ConvertDomain
 
 @admin.register(ConvertDomain)
 class ConvertDomainAdmin(admin.ModelAdmin):
-    list_display = ('name', 'host', 'rootdomain','zoneid')
-    search_fields = ('name', 'host')
+    list_display = ('name', 'host', 'zoneid', 'rootdomain')
+    search_fields = ('name', 'host', 'rootdomain')
+    fields = ('name', 'host', 'zoneid', 'rootdomain', 'certificate', 'private_key')
+
