@@ -4,6 +4,7 @@ from .models import server, domaininfo
 import paramiko
 import re
 import json
+from decouple import config
 import requests
 
 # Suppress only the single InsecureRequestWarning from urllib3 needed
@@ -125,7 +126,7 @@ def addsub(request, domain_id):
     subdomain = domain.servername
     specific_id = domain.specificid
     ip_address = domain.ipaddress
-    api_token = 'l4wbU0GSPmF1v8arHWPo_fWYWEEHxlhrczbzgcy3'
+    api_token = config('CLOUDFLARE_API_TOKEN')
     zone_id = domain.zoneid
     login_url = f'http://{ip_address}:54321/login'
     list_url = f'http://{ip_address}:54321/panel/inbound/list'
@@ -157,8 +158,8 @@ def addsub(request, domain_id):
 
     try:
         login_data = {
-            'username': 'Admin1',
-            'password': 'Sarahossein6@fazli'
+            'username': config('SSH_USERNAME'),
+            'password': config('SSH_PASSWORD'),
         }
 
         # Login to get session cookie

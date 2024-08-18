@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from decouple import Config, Csv
+config = Config()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,3 +136,9 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Load environment variables
+USERNAME = config('SSH_USERNAME')
+PASSWORD = config('SSH_PASSWORD')
+CLOUDFLARE_API_TOKEN = config('CLOUDFLARE_API_TOKEN')

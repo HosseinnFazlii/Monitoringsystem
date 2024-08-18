@@ -4,7 +4,7 @@ from .models import ConvertDomain
 import requests
 import json
 import paramiko
-
+from decouple import config
 
 def list_past_domains(request):
     past_domains = domaininfo.objects.all()
@@ -55,8 +55,8 @@ def convert_domain(request, domain_id, new_domain_id):
 
         # Update x-ui panel with new domain info
         login_data = {
-            'username': 'Admin1',
-            'password': 'Sarahossein6@fazli'
+            'username': config('SSH_USERNAME'),
+            'password': config('SSH_PASSWORD'),
         }
         session = requests.Session()
         login_response = session.post(login_url, data=login_data, verify=False)
